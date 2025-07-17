@@ -43,6 +43,8 @@ RUN apt-get update -qqy && apt-get -qqy upgrade && apt-get install -qqy \
     gcloud config set component_manager/disable_update_check true && \
     gcloud config set metrics/environment docker_image_latest && \
     gcloud --version && \
-    docker --version && kubectl version --client
+    docker --version && kubectl version --client && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 RUN git config --system credential.'https://source.developers.google.com'.helper gcloud.sh
 VOLUME ["/root/.config", "/root/.kube"]
